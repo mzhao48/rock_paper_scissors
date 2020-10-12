@@ -1,0 +1,64 @@
+<script>
+
+function playRound(playerSelection, computerSelection) {
+  // your code here!
+}
+
+const playerSelection = "rock";
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
+
+
+//lookup table to match random pick
+const lookup = {
+    1: "ROCK",
+    2: "PAPER",
+    3: "SCISSORS"
+};
+
+//human picks play
+    // prompt for human play
+    // consider what play can or can not enter
+
+function playerPlay() {
+  let playerPick = "";
+  let playerSelection = "";
+
+  playerPick = prompt("Let's play.  Rock, Paper, or Scissors?");
+
+  playerPick = playerPick.toUpperCase();
+
+  if (["ROCK", "PAPER", "SCISSORS"].includes(playerPick)) {
+    playerSelection = playerPick;
+    return playerSelection;
+  } else {
+    alert("Typo?  Try Again!");
+    playerPlay();
+  }
+}
+
+
+
+//computer plays random
+    // Math.random() a number
+    // match 1-3 with corresponding play
+
+function  computerPlay() {
+    let computerPickNum = Math.ceil(Math.random() * 3);
+    let computerSelection = lookup[computerPickNum];
+    return computerSelection;
+}
+
+
+//who wins?
+
+//update score
+
+
+//game() function to call playRound()
+    //if score does not add up to 5 (or round counts = 5), then repeat playRound()
+    //return/declare the winner with the highest score
+
+
+
+</script>
