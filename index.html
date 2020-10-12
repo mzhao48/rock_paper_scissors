@@ -23,12 +23,12 @@
     //function to play one round.  parameters = playerPick & computerPick to determined win, lose, or draw
     function playRound(playerSelection,computerSelection) {
     if (playerSelection == "ROCK" && computerSelection == "SCISSORS" ||
-    playerSelection == "PAPER" && computerSelection == "ROCK" ||
-    playerSelection == "SCISSORS" && computerSelection == "PAPER") {
+        playerSelection == "PAPER" && computerSelection == "ROCK" ||
+        playerSelection == "SCISSORS" && computerSelection == "PAPER") {
       return "You win!";
     } else if (playerSelection == "ROCK" && computerSelection == "PAPER" ||
-    playerSelection == "PAPER" && computerSelection == "SCISSORS" || 
-    playerSelection == "SCISSORS" && computerSelection == "ROCK") {
+        playerSelection == "PAPER" && computerSelection == "SCISSORS" || 
+        playerSelection == "SCISSORS" && computerSelection == "ROCK") {
       return "You Lose!";
     } else {
       return "Tie game!";
@@ -37,10 +37,10 @@
 
     //full game = 5 rounds of play.  Keeps score and displays result.
     function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let tieCount = 0;
-    let gameCount = 0;
+      let playerScore = 0;
+      let computerScore = 0;
+      let tieCount = 0;
+      let gameCount = 0;
 
     for (let i = 1; gameCount < 5; i++) {
       let playerSelection = prompt("Let's play: Rock, Paper, or Scissors?").toUpperCase();
