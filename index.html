@@ -1,64 +1,84 @@
-<script>
 
-function playRound(playerSelection, computerSelection) {
-  // your code here!
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors</title>
+  <script>
+    //lookup table after computerPlay's random number assignment
+    const lookup = {
+      1: "ROCK",
+      2: "PAPER",
+      3: "SCISSORS"
+    };
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+    //computerPlay after picking a random number and using lookup object
+    function computerPlay() {
+      let computerPickNum = Math.ceil(Math.random() * 3);
+      
+      return lookup[computerPickNum];
+    }
+
+    //function to play one round.  parameters = playerPick & computerPick to determined win, lose, or draw
+    function playRound(playerSelection,computerSelection) {
+    if (playerSelection == "ROCK" && computerSelection == "SCISSORS" ||
+    playerSelection == "PAPER" && computerSelection == "ROCK" ||
+    playerSelection == "SCISSORS" && computerSelection == "PAPER") {
+      return "You win!";
+    } else if (playerSelection == "ROCK" && computerSelection == "PAPER" ||
+    playerSelection == "PAPER" && computerSelection == "SCISSORS" || 
+    playerSelection == "SCISSORS" && computerSelection == "ROCK") {
+      return "You Lose!";
+    } else {
+      return "Tie game!";
+    }
+    }
+
+    //full game = 5 rounds of play.  Keeps score and displays result.
+    function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieCount = 0;
+    let gameCount = 0;
+
+    for (let i = 1; gameCount < 5; i++) {
+      let playerSelection = prompt("Let's play: Rock, Paper, or Scissors?").toUpperCase();
+
+      while (playerSelection !== "ROCK" && playerSelection !== "PAPER" && playerSelection !== "SCISSORS" ) {
+        playerSelection = prompt("Let's play: Rock, Paper, or Scissors?").toUpperCase();
+      }
+
+      const computerSelection = computerPlay();
+      const roundResult = playRound(playerSelection, computerSelection);
+
+      if (roundResult === "You win!") {
+        playerScore++;
+      } else if (roundResult === "You Lose!") {
+        computerScore++;
+      } else {
+        tieCount++;
+      }
+      console.log(`Round ${i}: ${roundResult} It was your ${playerSelection} vs. their ${computerSelection}.`);
+
+      gameCount++;
+    }
+
+    let gameResult = (playerScore > computerScore)
+      ? "you are the final winner!!"
+      : (computerScore > playerScore)
+        ? "you did not win this time.  Please try again."
+        : "you tied.  Better luck next time.";
+
+    return `After 5 rounds, the final score was ${playerScore} to ${computerScore} and therefore ${gameResult}`; 
+    }
+    
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
 
 
-//lookup table to match random pick
-const lookup = {
-    1: "ROCK",
-    2: "PAPER",
-    3: "SCISSORS"
-};
-
-//human picks play
-    // prompt for human play
-    // consider what play can or can not enter
-
-function playerPlay() {
-  let playerPick = "";
-  let playerSelection = "";
-
-  playerPick = prompt("Let's play.  Rock, Paper, or Scissors?");
-
-  playerPick = playerPick.toUpperCase();
-
-  if (["ROCK", "PAPER", "SCISSORS"].includes(playerPick)) {
-    playerSelection = playerPick;
-    return playerSelection;
-  } else {
-    alert("Typo?  Try Again!");
-    playerPlay();
-  }
-}
-
-
-
-//computer plays random
-    // Math.random() a number
-    // match 1-3 with corresponding play
-
-function  computerPlay() {
-    let computerPickNum = Math.ceil(Math.random() * 3);
-    let computerSelection = lookup[computerPickNum];
-    return computerSelection;
-}
-
-
-//who wins?
-
-//update score
-
-
-//game() function to call playRound()
-    //if score does not add up to 5 (or round counts = 5), then repeat playRound()
-    //return/declare the winner with the highest score
-
-
-
-</script>
