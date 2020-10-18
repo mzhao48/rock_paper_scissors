@@ -11,6 +11,7 @@ buttons.forEach((button) => {
         let computerSelection = computerPlay();
         let playerSelection = this.value;
         playRound(playerSelection, computerSelection);
+        game();
     });
 });
 
@@ -59,39 +60,12 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// full game = 5 rounds of play.Keeps score and displays result.
-// function game() {
+//first to 5 points win
+function game() {
+    if (playerScore == 5) {
+        results.textContent = "First to 5, you've won the whole game!"
+    } else if (computerScore == 5) {
+        results.textContent = "Too bad.  The Computer won 5 rounds first."
+    }
 
-//     for (let i = 1; gameCount < 5; i++) {
-//         let playerSelection = prompt("Let's play: Rock, Paper, or Scissors?").toUpperCase();
-
-//         while (playerSelection !== "ROCK" && playerSelection !== "PAPER" && playerSelection !== "SCISSORS") {
-//             playerSelection = prompt("Let's play: Rock, Paper, or Scissors?").toUpperCase();
-//         }
-
-//         let playerSelection = prompt("Let's play: Rock, Paper, or Scissors?").toUpperCase();
-
-//         const computerSelection = computerPlay();
-//         const roundResult = playRound(playerSelection, computerSelection);
-
-//         if (roundResult === "You win!") {
-//             playerScore++;
-//         } else if (roundResult === "You Lose!") {
-//             computerScore++;
-//         } else {
-//             tieCount++;
-//         }
-//         console.log(`Round : ${roundResult} It was your ${playerSelection} vs. their ${computerSelection}.`);
-
-//         gameCount++;
-//         // }
-
-//         let gameResult = (playerScore > computerScore)
-//             ? "you are the final winner!!"
-//             : (computerScore > playerScore)
-//                 ? "you did not win this time.  Please try again."
-//                 : "you tied.  Better luck next time.";
-
-//         return `After 5 rounds, the final score was ${playerScore} to ${computerScore} and therefore ${gameResult}`;
-//     }
-
+}
